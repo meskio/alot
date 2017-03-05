@@ -49,7 +49,7 @@ class PipeWalker(urwid.ListWalker):
 
         self.lines.remove(obj)
         if self.lines:
-            self.set_focus(next_focus)
+            self._focus = next_focus
         self._modified()
 
     def _get_at_pos(self, pos):
