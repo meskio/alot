@@ -160,6 +160,8 @@ def verify_detached(message, signature):
     try:
         (_, verify_results) = ctx.verify(message, signature)
         return verify_results.signatures
+    except gpg.errors.BadSignatures as e:
+        raise GPGProblem(e.message, code=-1)
     except gpg.errors.GPGMEError as e:
         raise GPGProblem(e.message, code=e.code)
 
